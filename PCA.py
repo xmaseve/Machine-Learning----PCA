@@ -27,7 +27,7 @@ def pca(data,n):
 
     #keep the principal components k
     eigvaluesIndice = np.argsort(eigvalues)
-    max_eigvaluesIndice = eigvaluesIndice[-1:-(n+1):-1]
+    max_eigvaluesIndice = eigvaluesIndice[:-(n+1):-1]
     max_eigvectors = eigvectors[:,max_eigvaluesIndice]
     newdata = norm * max_eigvectors
     return newdata
@@ -35,7 +35,7 @@ def pca(data,n):
 #calculate n based on the percentage
 def n(eigenvalues,percentage):
     sort_eigvalues = np.sort(eigenvalues)
-    sort_eigvalues = sort_eigvalues[-1::-1]
+    sort_eigvalues = sort_eigvalues[::-1]
     sum_eigvalues = np.sum(sort_eigvalues)
     pmsum = 0
     num = 0
